@@ -31,7 +31,7 @@
                     <input type="password" name="password" id="password">
                 </div><br>
                 <button id="btnLogin" class="btn btn-light w-25">LogIn</button><br>
-                <a href="#" class="text-black">Registrate >>></a>
+                <a href="/register" class="text-black">Registrate >>></a>
             </form>
         </div>
     </div>

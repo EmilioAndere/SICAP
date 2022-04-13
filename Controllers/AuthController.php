@@ -25,4 +25,31 @@ class AuthController {
         }
     } 
 
+    public function register(){
+        $nombre = $_POST['nombre'];
+        $apellidos = $_POST['apellidos'];
+        $username = $_POST['user'];
+        $pass = $_POST['pass'];
+        $user = new Usuario();
+        $data = $user->insert($nombre, $apellidos, $username, $pass);
+        if(gettype($data) == "string"){
+            echo json_encode([
+                'msg' => $data,
+                'err' => true,
+            ]);
+        }else if($data < 1){
+            echo json_encode([
+                'msg' => "Error en el usuario no se pudo registrar",
+                'err' => true,
+            ]);
+        }else{
+
+            echo json_encode([
+                'msg' => "Felicidades te has registrado con exito",
+                'err' => false,        
+            ]);
+        }
+
+    }
+
 }

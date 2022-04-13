@@ -9,7 +9,7 @@ class DbConnection {
 
     public static function getInstance(){
         if(self::$conn == null){
-            self::$conn = new PDO(self::$stringConnection,"root","eal260800$");
+            self::$conn = new PDO(self::$stringConnection,"root","");
         }
         return self::$conn;
     }

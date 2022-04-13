@@ -1,5 +1,5 @@
 <?php
 
 $middle = array(
-    'Authentication' => ['Home', 'Expedientes']
+    'Authentication' => ['Home', 'Expedientes'],
 );
