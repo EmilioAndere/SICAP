@@ -6,13 +6,12 @@ function login(ev){
         let resp = JSON.parse(data);
         setTimeout(function(){
             if(!resp.err){
-                
+                document.cookie = "token="+resp.token;
                 $("#alert-login").removeClass("alert-danger");
                 $("#alert-login").addClass("alert-success");
                 setTimeout(function(){
                     $(location).attr('href', "/home");
                 },1000);
-                
             }else{
                 $("#alert-login").removeClass("alert-success");
                 $("#alert-login").addClass("alert-danger");

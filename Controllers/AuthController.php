@@ -1,5 +1,6 @@
 <?php
 include_once './Models/Usuario.php';
+require_once './Core/Helpers.php';
 
 class AuthController {
 
@@ -11,13 +12,14 @@ class AuthController {
         if(!$data){
             echo json_encode([
                 'msg' => "Error en el usuario y/o contraseña",
-                'err' => true
+                'err' => true,
             ]);
         }else{
             if($data['username'] === $username && $data['password'] === $pass){
                 echo json_encode([
                     'msg' => "Te has loggeado con exito",
-                    'err' => false              
+                    'err' => false,
+                    'token' => Helpers::genToken(10)              
                 ]); 
             }
         }
