@@ -11,9 +11,13 @@ class Authentication {
                     require_once './Views/'.ucfirst($next[0]).".php";
                 }else{
                     $controller = ucfirst($next[0])."Controller";
-                    include_once '../Controllers/'.$controller.".php";
+                    include_once './Controllers/'.$controller.".php";
                     $instance = new $controller();
-                    $instance->{$next[1]}();
+                    if(array_key_exists(2, $next)){
+                        $instance->{$next[1]}($next[2]);
+                    }else{
+                        $instance->{$next[1]}();
+                    }
                 }
             }else{
                 header('Location: /login');

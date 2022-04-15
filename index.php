@@ -17,7 +17,11 @@ foreach($middle as $middleware => $classes){
             $controller = ucfirst($url[0])."Controller";
             include_once './Controllers/'.$controller.".php";
             $instance = new $controller();
-            $instance->{$url[1]}();
+            if(array_key_exists(2, $url)){
+                $instance->{$url[1]}($url[2]);
+            }else{
+                $instance->{$url[1]}();
+            }
         }
     }
 }
