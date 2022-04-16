@@ -23,7 +23,7 @@
           <a class="nav-link active" href="/expedientes">Expedientes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pacientes</a>
+          <a class="nav-link" href="/pacientes">Pacientes</a>
         </li>
       </ul>
       <span class="navbar-text">
@@ -33,6 +33,29 @@
   </div>
 </nav>
 <div class="container">
+    <div class="my-5 shadow p-3">
+        <form id="formSh" class="d-flex flex-column align-items-center">
+          <div class="d-flex py-3">
+            <div class="mx-1">
+              <label for="nombre">Nombre:</label>
+              <input type="text" name="nombre" id="srnombre">
+            </div>
+            <div class="mx-1">
+              <label for="apellidos">Apellidos:</label>
+              <input type="text" name="apellidos" id="srapellidos">
+            </div>
+            <div>
+              <label for="categoria">Categoria</label>
+              <select name="categoria" id="categoria"></select>
+            </div>
+          </div>
+          <div class="pt-2 d-flex">
+            <button class="btn btn-light fw-bold text-light d-flex align-items-center mx-1" id="search" style="background: #01AA9E !important"><ion-icon name="search-circle-outline"></ion-icon> Buscar</button>
+            <button class="btn btn-light fw-bold d-flex align-items-center mx-1" id="clean"><ion-icon name="backspace-outline"></ion-icon> Limpiar</button>
+          </div>
+          
+        </form>
+    </div>
     <div class="m-3 shadow p-3">
       <table class="table table-sm table-striped table-hover">
         <thead>
@@ -104,9 +127,9 @@
             <div class="d-flex align-items-center w-25 justify-content-end pe-5 my-3">
               <div class="pe-2">Sexo:</div>
               <label for="sexo" class="ps-1">M</label>
-              <input type="radio" checked name="sexo" id="masculino" class="me-1">
+              <input type="radio" checked disabled name="sexo" id="masculino" class="me-1">
               <label for="sexo">F</label>
-              <input type="radio" name="sexo" id="femenino" class="pe-1">
+              <input type="radio" name="sexo" disabled id="femenino" class="pe-1">
             </div>
             <div class="d-flex my-3 me-3">
               <label for="nacimienton" class="pe-2">Fecha de Nacimiento:</label>

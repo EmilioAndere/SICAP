@@ -5,23 +5,63 @@ $(document).ready(function(){
     .done(function(data){
         let resp = JSON.parse(data);
         resp.forEach(item => {
-            $("#bodyExp").append(`
-            <tr class="py-2 text-center">
-                <th scope="row">${item.id}</th>
-                <td>${item.nombre}</td>
-                <td>${item.contacto}</td>
-                <td>${item.citas}</td>
-                <td>${item.categoria}</td>
-                <td>${item.status}</td>
-                <td>
-                    <button id="${item.id}" class="btn btn-info fs-6" data-bs-toggle="modal" data-bs-target="#modalExp"><ion-icon name="file-tray-stacked-outline"></ion-icon></button>
-                </td>
-            </tr>
-            `)
+            showExp(item)
         });
     })
 
+    $.get('/cat/all')
+    .done(function(data){
+        let resp = JSON.parse(data);
+        resp.forEach(item => {
+            $("#categoria").append(`<option value="${item.id}">${item.nombre}</option>`)
+        })
+    })
+
+    $("#search").click(function(ev){
+        ev.preventDefault();
+        $.post('/pacientes/get', $("#formSh").serialize())
+        .done(function(data){
+            let resp = JSON.parse(data);
+            if(resp === false){
+                $("#bodyExp").html("No existe");
+            }else{
+                $("#bodyExp").html("");
+                showExp(resp);
+            }
+        })
+    })
+
+    $("#clean").click(function(ev){
+        ev.preventDefault()
+        $("#bodyExp").html(" ");
+        $.get('/expedientes/all')
+        .done(function(data){
+            let resp = JSON.parse(data);
+            resp.forEach(item => {
+                showExp(item)
+            });
+        })
+        assign("#srnombre", " ");
+        assign("#srapellidos", " ");
+    })
+
 })
+
+function showExp(item){
+    $("#bodyExp").append(`
+        <tr class="py-2 text-center">
+            <th scope="row">${item.id}</th>
+            <td>${item.nombre}</td>
+            <td>${item.contacto}</td>
+            <td>${item.citas}</td>
+            <td>${item.categoria}</td>
+            <td>${item.status}</td>
+            <td>
+                <button style="background: #01AA9E !important" id="${item.id}" class="text-light fw-bold btn btn-light fs-6" data-bs-toggle="modal" data-bs-target="#modalExp"><ion-icon name="file-tray-stacked-outline"></ion-icon></button>
+            </td>
+        </tr>
+    `)
+}
 
 function calcularEdad(fecha) {
     var hoy = new Date();
@@ -53,6 +93,7 @@ modalExp.addEventListener('show.bs.modal', function(event){
         assign("#correo", resp.correo);
         assign("#celular", resp.telefono);
         assign("#ocupacion", resp.ocupacion);
+        assign("#carrera", resp.carrera);
         assign("#observaciones", resp.observaciones);
         assign("#diagnostico", resp.diagnostico);
     });

@@ -28,7 +28,7 @@
           <a class="nav-link" href="/expedientes">Expedientes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pacientes</a>
+          <a class="nav-link" href="/pacientes">Pacientes</a>
         </li>
       </ul>
       <span class="navbar-text">
