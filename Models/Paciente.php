@@ -21,6 +21,15 @@ class Paciente {
         return $data;
     }
 
+    public function get($id){
+        $conn = DbConnection::getInstance();
+        $sql = "SELECT p.*,c.nombre AS categoria,t.nombre AS tipo,sp.nombre AS status FROM tbl_pacientes AS p INNER JOIN tbl_categorias AS c ON p.categoria_id = c.id INNER JOIN tbl_tipos AS t ON p.tipo_id = t.id INNER JOIN tbl_statuspaciente AS sp ON p.status_id = sp.id WHERE P.id = :id AND usuario_id = 1;";
+        $sth = $conn->prepare($sql);
+        $sth->execute(array(':id' => $id));
+        $data = $sth->fetch();
+        return $data;
+    }
+
     public function update($id){
         // $conn = DbConnection 
     }

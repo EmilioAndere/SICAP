@@ -18,6 +18,11 @@ class PacientesController {
         echo json_encode($data);
     }
 
+    public function find($slug){
+        $data = $this->paciente->get($slug);
+        echo json_encode($data);
+    }
+
     public function change($slug){
         $paciente = $_POST;
         var_dump($paciente);

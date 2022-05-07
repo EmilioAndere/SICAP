@@ -133,9 +133,9 @@
                       </div>
                       <div class="w-100">
                         <div class="d-flex align-items-center ms-3 w-100">
-                          <input type="radio" name="sexo" id="masculino">
+                          <input type="radio" name="sexo" id="masculino" value="Masculino">
                           <label for="masculino">M</label>
-                          <input type="radio" class="ms-2" name="sexo" id="femenino">
+                          <input type="radio" class="ms-2" name="sexo" id="femenino" value="Femenino">
                           <label for="femenino">F</label>
                         </div>
                       </div>
@@ -171,8 +171,8 @@
                     </div>
                   </div>
                   <div>
-                    <label for="ocupaciones">Ocupaciones:</label><br>
-                    <input type="text" name="ocupaciones" id="ocupaciones" class="w-100">
+                    <label for="ocupaciones">Ocupacion:</label><br>
+                    <input type="text" name="ocupacion" id="ocupacion" class="w-100">
                   </div>
                 </div>
               </div>
